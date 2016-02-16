@@ -1,6 +1,9 @@
+
+var react = require('react')
 /**
  * Module dependencies.
  */
+
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var compress = require('compression');
@@ -26,7 +29,13 @@ var _ = require('lodash');
  *
  * Default path: .env
  */
-dotenv.load({ path: '.env.example' });
+dotenv.load({ path: 'sandbox.env' });
+console.log("mongodbHELP:",process.env.MONGODB)
+mongoose.connect(process.env.MONGODB || process.env.MONGOLAB_URI);
+mongoose.connection.on('error', function() {
+  console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  process.exit(1);
+});
 
 /**
  * Controllers (route handlers).
@@ -35,6 +44,7 @@ var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
+var salesforceController = require('./controllers/salesforce');
 
 /**
  * API keys and Passport configuration.
@@ -49,17 +59,14 @@ var app = express();
 /**
  * Connect to MongoDB.
  */
-mongoose.connect(process.env.MONGODB || process.env.MONGOLAB_URI);
-mongoose.connection.on('error', function() {
-  console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
-  process.exit(1);
-});
+
 
 /**
  * Express configuration.
  */
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'hbs');
 app.set('view engine', 'jade');
 app.use(compress());
 app.use(sass({
@@ -159,6 +166,9 @@ app.get('/api/paypal/cancel', apiController.getPayPalCancel);
 app.get('/api/lob', apiController.getLob);
 app.get('/api/bitgo', apiController.getBitGo);
 app.post('/api/bitgo', apiController.postBitGo);
+
+app.get('/api/salesforce', passportConf.isAuthenticated, passportConf.isAuthorized, salesforceController.getSalesforce);
+app.post('/api/salesforce', passportConf.isAuthenticated, passportConf.isAuthorized, salesforceController.postSalesforce);
 
 /**
  * OAuth authentication routes. (Sign in)

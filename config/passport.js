@@ -499,6 +499,10 @@ passport.use(new ForceDotComStrategy({
  //     console.log(req);
       User.findOne({ salesforce: profile._raw.user_id }, function(err, existingUser) {
         if (existingUser) {
+          console.log("logging into an existing user");
+
+
+
           return done(null, existingUser);
         }
         User.findOne({ email: profile._raw.email }, function(err, existingEmailUser) {
@@ -506,6 +510,7 @@ passport.use(new ForceDotComStrategy({
             req.flash('errors', { msg: 'There is already an account using this email address. Sign in to that account and link it with Salesforce manually from Account Settings.' });
             done(err);
           } else {
+            console.log("creating a new user");
             var user = new User();
             user.email = profile._raw.email;
             user.salesforce = profile._raw.user_id;
@@ -513,6 +518,7 @@ passport.use(new ForceDotComStrategy({
             user.profile.name = profile._raw.displayName;
          //   user.profile.gender = profile._json.gender;
          //   user.profile.picture = profile._json.image.url;
+            console.log("updating the user");
             user.save(function(err) {
               done(err, user);
             });
@@ -521,10 +527,12 @@ passport.use(new ForceDotComStrategy({
       });
 
 
-      console.log("profile._raw.email", profile._raw.email);
-      console.log("profile._raw.user_id", profile._raw.user_id);
-    //  console.log("reqdump :", req);
-    //  console.log("profiledump :", profile);
+     // console.log("profile._raw.email", profile._raw.email);
+     // console.log("profile._raw.user_id", profile._raw.user_id);
+   //   console.log("reqdump :", req);
+     // console.log("profiledump :", profile);
+      console.log("accesstoken :", accessToken);
+      //console.log("refreshToken :", refreshToken);
 
 
     }
