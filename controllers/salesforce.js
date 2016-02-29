@@ -24,8 +24,8 @@ exports.getSalesforce = function(req, res, next) {
             clientId : process.env.SALESFORCE_ID,
             clientSecret : process.env.SALESFORCE_SECRET,
             redirectUri : process.env.SALESFORCE_CALLBACK_URL,
-        instanceUrl : token.refreshToken.instance_url,
-        accessToken : token.accessToken,
+        instanceUrl : token.accessToken.params.instance_url,
+        accessToken : token.accessToken.params.access_token,
         refreshToken : token.refreshToken
     });
 
