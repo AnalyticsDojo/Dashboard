@@ -13,7 +13,7 @@ exports.getSalesforce = function(req, res, next) {
     var token = _.find(req.user.tokens, { kind: 'salesforce' });
     console.log("accesstoken retreived:", token.accessToken);
    // console.log("refreshToken :", token.refreshToken);
-    console.log("Instance_URL :", token.refreshToken.instance_url);
+    console.log("Instance_URL :", token.accessToken.params.instance_url);
 
 /*
     var conn = new jsforce.Connection({
@@ -24,16 +24,17 @@ exports.getSalesforce = function(req, res, next) {
             clientId : process.env.SALESFORCE_ID,
             clientSecret : process.env.SALESFORCE_SECRET,
             redirectUri : process.env.SALESFORCE_CALLBACK_URL,
-        instanceUrl : token.accessToken.params.instance_url,
-        accessToken : token.accessToken.params.access_token,
-        refreshToken : token.refreshToken
-    });
+            instanceUrl : token.accessToken.params.instance_url,
+            accessToken : token.accessToken.params.access_token,
+            refreshToken : token.refreshToken
+        });
 
     var records = [];
-    conn.query("SELECT Id, Name FROM Account", function(err, result) {
+    conn.query("SELECT Id, Name FROM Contact", function(err, res) {
         if (err) { return console.error(err); }
-        console.log("total : " + result.totalSize);
-        console.log("fetched : " + result.records.length);
+        console.log("total : " + res.totalSize);
+        console.log("fetched : " + res.records.length);
+        console.log(res.records[0]);
     });
 
 /*
@@ -60,7 +61,8 @@ exports.getSalesforce = function(req, res, next) {
     });
 */
     res.render('api/salesforce', {
-        title: 'Salesforce API'
+        title: 'Salesforce API',
+        // accounts: result.records
     });
 
 
@@ -78,8 +80,9 @@ exports.getSalesforcebad = function(req, res, next) {
     var T = new Twit({
         consumer_key: process.env.TWITTER_KEY,
         consumer_secret: process.env.TWITTER_SECRET,
-        access_token: token.accessToken,
-        access_token_secret: token.tokenSecret
+        instanceUrl : token.accessToken.params.instance_url,
+        accessToken : token.accessToken.params.access_token,
+        refreshToken : token.refreshToken
     });
     T.get('search/tweets', { q: 'nodejs since:2013-01-01', geocode: '40.71448,-74.00598,5mi', count: 10 }, function(err, reply) {
         if (err) {
@@ -110,8 +113,9 @@ exports.postSalesforce = function(req, res, next) {
     var T = new Twit({
         consumer_key: process.env.TWITTER_KEY,
         consumer_secret: process.env.TWITTER_SECRET,
-        access_token: token.accessToken,
-        access_token_secret: token.tokenSecret
+        instanceUrl : token.accessToken.params.instance_url,
+        accessToken : token.accessToken.params.access_token,
+        refreshToken : token.refreshToken
     });
     T.post('statuses/update', { status: req.body.tweet }, function(err, data, response) {
         if (err) {
