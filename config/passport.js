@@ -492,11 +492,10 @@ passport.use(new ForceDotComStrategy({
       clientSecret: process.env.SALESFORCE_SECRET,
       callbackURL: process.env.SALESFORCE_CALLBACK_URL,
       authorizationURL: process.env.SALESFORCE_AUTHORIZE_URL,
-      tokenURL: process.env.SALESFORCE_TOKEN_URL
+      tokenURL: process.env.SALESFORCE_TOKEN_URL,
+      passReqToCallback: true
     },
     function(req, accessToken, refreshToken, profile, done) {
- //    console.log("request token");
- //     console.log(req);
       User.findOne({ salesforce: profile._raw.user_id }, function(err, existingUser) {
         if (existingUser) {
           console.log("logging into an existing user");

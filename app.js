@@ -23,6 +23,7 @@ var passport = require('passport');
 var expressValidator = require('express-validator');
 var sass = require('node-sass-middleware');
 var _ = require('lodash');
+// var Plotly = require('plotly');
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -45,6 +46,7 @@ var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
 var salesforceController = require('./controllers/salesforce');
+var dashboardController = require('./controllers/dashboard');
 
 /**
  * API keys and Passport configuration.
@@ -117,6 +119,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
  * Primary app routes.
  */
 app.get('/', homeController.index);
+app.get('/dashboard', dashboardController.dashboardIndex);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
