@@ -406,7 +406,7 @@ passport.use('tumblr', new OAuthStrategy({
 
 /**
  * Foursquare API OAuth.
- */
+
 passport.use('foursquare', new OAuth2Strategy({
     authorizationURL: 'https://foursquare.com/oauth2/authorize',
     tokenURL: 'https://foursquare.com/oauth2/access_token',
@@ -424,10 +424,10 @@ passport.use('foursquare', new OAuth2Strategy({
     });
   }
 ));
-
+ */
 /**
  * Venmo API OAuth.
- */
+
 passport.use('venmo', new OAuth2Strategy({
     authorizationURL: 'https://api.venmo.com/v1/oauth/authorize',
     tokenURL: 'https://api.venmo.com/v1/oauth/access_token',
@@ -445,10 +445,10 @@ passport.use('venmo', new OAuth2Strategy({
     });
   }
 ));
-
+ */
 /**
  * Steam API OpenID.
- */
+
 passport.use(new OpenIDStrategy({
   apiKey: process.env.STEAM_KEY,
   providerURL: 'http://steamcommunity.com/openid',
@@ -481,7 +481,7 @@ passport.use(new OpenIDStrategy({
     });
   });
 }));
-
+ */
 /**
  * Sign in with Salesforce.
  */
