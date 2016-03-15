@@ -6,11 +6,11 @@ var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var GitHubStrategy = require('passport-github').Strategy;
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-var OpenIDStrategy = require('passport-openid').Strategy;
-var OAuthStrategy = require('passport-oauth').OAuthStrategy;
-var OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
+//var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+//var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+//var OpenIDStrategy = require('passport-openid').Strategy;
+//var OAuthStrategy = require('passport-oauth').OAuthStrategy;
+//var OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
 var ForceDotComStrategy = require('passport-forcedotcom').Strategy;
 
 var User = require('../models/User');
