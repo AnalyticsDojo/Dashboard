@@ -29,3 +29,4 @@ bower_components
 Thumbs.db
 
 *.env
+herokuconfig.sh
