@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var passport = require('passport');
 var request = require('request');
-var InstagramStrategy = require('passport-instagram').Strategy;
+//var InstagramStrategy = require('passport-instagram').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
@@ -27,7 +27,7 @@ passport.deserializeUser(function(id, done) {
 
 /**
  * Sign in with Instagram.
- */
+
 passport.use(new InstagramStrategy({
   clientID: process.env.INSTAGRAM_ID,
   clientSecret: process.env.INSTAGRAM_SECRET,
@@ -74,7 +74,7 @@ passport.use(new InstagramStrategy({
     });
   }
 }));
-
+ */
 /**
  * Sign in using Email and Password.
  */
