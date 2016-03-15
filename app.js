@@ -30,7 +30,15 @@ var _ = require('lodash');
  *
  * Default path: .env
  */
-dotenv.load({ path: 'sandbox.env' });
+
+
+var OnHeroku=process.env.ONHEROKU;
+
+if(!OnHeroku){
+  dotenv.load({ path: 'sandbox.env' });
+}
+
+
 console.log("mongodbHELP:",process.env.MONGODB)
 mongoose.connect(process.env.MONGODB || process.env.MONGOLAB_URI);
 mongoose.connection.on('error', function() {
