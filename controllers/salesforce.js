@@ -3,7 +3,6 @@ var _ = require('lodash');
 var jsforce;
 
 
-
 /**
  * GET /api/twitter
  * Twiter API example.
@@ -37,6 +36,16 @@ exports.getSalesforce = function(req, res, next) {
         console.log(res.records[0]);
     });
 
+
+//Add A Plotly Plot
+    var plotly = require('plotly')(process.env.PLOTLY_ID, process.env.PLOTLY_API_KEY);
+    var PlotlyDashboardUrl = process.env.PLOTLY_DASHBOARD_URL;
+/*
+    plotly.getFigure('process.env.PLOTLY_ID', 'salesforce/lead-distributions', function (err, figure) {
+        if (err) console.log(err);
+        console.log(figure);
+    });
+    */
 /*
 
     var conn = new jsforce.Connection({
