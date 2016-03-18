@@ -1,9 +1,9 @@
 {
-  "name": "hackathon-starter",
-  "version": "3.4.0",
+  "name": "rendergraph",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://rendergraph.analyticsdojo.com"
   },
   "scripts": {
     "start": "node app.js",
@@ -28,7 +28,6 @@
     "express-validator": "^2.18.0",
     "fbgraph": "^1.1.0",
     "github-api": "^0.10.7",
-    "history": "^2.0.1",
     "instagram-node": "^0.5.8",
     "jade": "^1.11.0",
     "jsforce": "^1.5.1",
@@ -56,8 +55,6 @@
     "passport-twitter": "^1.0.3",
     "paypal-rest-sdk": "^1.6.8",
     "plotly": "^1.0.6",
-    "react": "^0.14.7",
-    "react-router": "^1.0.3",
     "request": "^2.67.0",
     "serve-favicon": "^2.3.0",
     "stripe": "^4.2.0",
