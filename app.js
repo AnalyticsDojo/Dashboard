@@ -1,5 +1,5 @@
 
-var react = require('react')
+
 /**
  * Module dependencies.
  */
