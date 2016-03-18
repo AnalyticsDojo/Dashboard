@@ -11,14 +11,8 @@ exports.getSalesforce = function(req, res, next) {
     jsforce = require('jsforce');
     var token = _.find(req.user.tokens, { kind: 'salesforce' });
     console.log("accesstoken retreived:", token.accessToken);
-   // console.log("refreshToken :", token.refreshToken);
     console.log("Instance_URL :", token.accessToken.params.instance_url);
 
-/*
-    var conn = new jsforce.Connection({
-            instanceUrl: token.refreshToken.instance_url,
-            accessToken: token.accessToken });
-    */
     var conn = new jsforce.Connection({
             clientId : process.env.SALESFORCE_ID,
             clientSecret : process.env.SALESFORCE_SECRET,
