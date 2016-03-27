@@ -4,7 +4,7 @@
 @import "vendors/bootstrap-social";
 @import "vendors/font-awesome/font-awesome";
 
-@import "themes/default/default";
+@import "themes/modern/modern";
 
 // Scaffolding
 // -------------------------
@@ -68,4 +68,13 @@ textarea {
 
 .fa {
   margin-right: 6px;
+}
+
+// Iframe
+// -------------------------
+
+.iframe{
+  border: 0px;
+  height: 100%;
+  scrolling: no;
 }

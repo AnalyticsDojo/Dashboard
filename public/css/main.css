@@ -11649,42 +11649,74 @@ fieldset[disabled] .btn-yahoo.active {
   content: "";
 }
 
+footer {
+  color: #fff;
+  background-color: #222222;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+a {
+  transition: all 0.4s cubic-bezier(0.24, 0.45, 0.46, 0.92);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul,
+p {
+  font-size: 14px;
+}
+
+.text-danger {
+  color: #de4b33;
+}
+
+.dropdown-menu > li > a {
+  font-weight: 300;
+}
+
 .btn {
-  border-radius: 0;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.11), 1px 1px 0 rgba(255, 255, 255, 0.21) inset;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 3px;
+  transition: all 0.4s cubic-bezier(0.24, 0.45, 0.46, 0.92);
 }
 
-.btn:focus {
-  outline: none;
+.btn:hover {
+  color: #fff;
+  background-color: #222222;
 }
 
-.btn-link {
-  box-shadow: none;
+.btn-social, .btn-social-icon {
+  padding: 10px 50px;
 }
 
-.btn-default, .btn-default:focus {
-  background-image: linear-gradient(to bottom, #ffffff 60%, #f8f8f8 100%);
+.btn-social :first-child, .btn-social-icon :first-child {
+  width: 38px;
+  line-height: 38px;
 }
 
-.form-control:focus {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset;
+.btn-link:hover {
+  color: #222222;
+  text-decoration: none;
+  background-color: transparent;
 }
 
 .alert {
-  border-radius: 0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: #fff;
 }
 
 .navbar-default {
   border: 0;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-default .navbar-nav > li > a {
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  transition: all 0.2s linear;
+  transition: color 0.4s cubic-bezier(0.24, 0.45, 0.46, 0.92);
 }
 
 html {
@@ -11731,6 +11763,12 @@ textarea {
 
 .fa {
   margin-right: 6px;
+}
+
+.iframe {
+  border: 0px;
+  height: 100%;
+  scrolling: no;
 }
 
 /*# sourceMappingURL=main.css.map */

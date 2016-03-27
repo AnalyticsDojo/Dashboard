@@ -4,8 +4,8 @@ var jsforce;
 
 
 /**
- * GET /api/twitter
- * Twiter API example.
+ * GET /api/salesforce
+ * Salesforce API example.
  */
 exports.getSalesforce = function(req, res, next) {
     jsforce = require('jsforce');
@@ -33,7 +33,6 @@ exports.getSalesforce = function(req, res, next) {
 
 //Add A Plotly Plot
     var plotly = require('plotly')(process.env.PLOTLY_ID, process.env.PLOTLY_API_KEY);
-    var PlotlyDashboardUrl = process.env.PLOTLY_DASHBOARD_URL;
 /*
     plotly.getFigure('process.env.PLOTLY_ID', 'salesforce/lead-distributions', function (err, figure) {
         if (err) console.log(err);
